@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Tweets</h1>
+
+<%# if there is a twitter account %>
+<% if Current.user.twitter_accounts.any? %>
+    <%= link_to 'Schedule a Tweet', new_tweet_path, class: "btn btn-primary" %>
+<% end %>  
+</div>
+
+<%# If there are no twitter accounts %>
+<% if Current.user.twitter_accounts.none? %>
+    <%= link_to "Connect a Twitter Account", "/auth/twitter", method: :post, class: "btn btn-primary" %>
+<% end %>
+
+<%# render a partial(component) from _tweet.html.erb %>
+<%= render @tweets %> 
